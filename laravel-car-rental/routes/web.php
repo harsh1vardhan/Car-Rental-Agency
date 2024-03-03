@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\CarsController;
 use App\Http\Controllers\userAuthController;
 use App\Http\Controllers\VendorAuthController;
 use App\Http\Controllers\Vendors\VendorDashboard;
@@ -69,11 +69,11 @@ Route::middleware('vendor_middleware')->prefix('vendors/dashboard')->group(funct
 
     Route::prefix('articles')->group(function () {
 
-        Route::get('/', [ArticleController::class, 'index'])->name('articles.index');
+        Route::get('/', [CarsController::class, 'index'])->name('cars.index');
 
-        Route::get('/create', [ArticleController::class, 'create'])->name('articles.create');
+        Route::get('/create', [CarsController::class, 'create'])->name('cars.create');
 
-        Route::post('/create', [ArticleController::class, 'handleCreate'])->name('articles.handleCreate');
+        Route::post('/create', [CarsController::class, 'handleCreate'])->name('cars.handleCreate');
     });
 
 

@@ -2,34 +2,42 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Car;
 use App\Models\CloudFile;
 use App\Models\Product;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class ArticleController extends Controller
+class CarsController extends Controller
 {
     public function index()
     {
-        $articles = Product::latest()->with('image')->get();
-        return view('dashboard.vendors.articles.index', compact('articles'));
+        $articles = Car::latest()->with('image')->get();
+        return view('dashboard.vendors.cars.index', compact('articles'));
     }
 
     public function create()
     {
-        return view('dashboard.vendors.articles.create');
+        return view('dashboard.vendors.cars.create');
     }
 
 
     public function handleCreate(Request $request)
     {
+
         $request->validate([
-            'name' => 'required',
-            'price' => 'required|integer'
+            'model' => 'required',
+            'number' => 'required|integer',
+            'seating_capacity' => 'required|integer',
+            'rent_per_day' => 'required|integer',
+
         ], [
-            'name.required' => 'Le nom du produit est requis',
-            'price.required' => 'Le prix du produit est requis'
+            'model.required' => 'Car model is required',
+            'number.required' => 'Value is required',
+            'seating_capacity.required' => 'Value is required',
+            'rent_per_day.required' => 'Value is required',
+
         ]);
 
 
@@ -38,23 +46,25 @@ class ArticleController extends Controller
             DB::beginTransaction();
 
             $productData = [
-                'name' => $request->name,
-                'price' => $request->price,
-                'description' => $request->description,
-                'vendor_id' => auth('vendor')->user()->id,
+                'model' => $request->model,
+                'number' => $request->number,
+                'seating_capacity' => $request->seating_capacity,
+                'rent_per_day' => $request->rent_per_day,
+                'agency_id' => auth('vendor')->user()->id,
             ];
 
 
 
-            $product = Product::create($productData);
+            $product = Car::create($productData);
 
 
-            $this->handleImageUpload($product, $request, 'image', 'cloud_files/articles', 'cloud_file_id');
+            $this->handleImageUpload($product, $request, 'image', 'cloud_files/cars', 'cloud_file_id');
             //Gerer ici l'upload des images 
 
             DB::commit();
-            return redirect()->route('articles.index')->with('success', 'Produit enregistrer');
+            return redirect()->route('cars.index')->with('success', 'Car save successfull');
         } catch (Exception $e) {
+            dd($e);
             DB::rollBack();
             return redirect()->back()->with('error', $e->getMessage());
         }
