@@ -26,11 +26,11 @@
                         <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">Account</a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="{{ route('user.register') }}">Crée mon compte</a></li>
+                            <li><a class="dropdown-item" href="{{ route('user.register') }}">Register</a></li>
                             <li>
                                 <hr class="dropdown-divider" />
                             </li>
-                            <li><a class="dropdown-item" href="{{ route('user.login') }}">Me connecter</a></li>
+                            <li><a class="dropdown-item" href="{{ route('user.login') }}">Login</a></li>
 
                         </ul>
                     </li>
@@ -38,8 +38,7 @@
             @endguest
 
             @auth
-                <a href="{{ route('user.logout') }}" class="btn btn-danger ml-1" style="margin-left: 1rem">Me
-                    déconnecter</a>
+                <a href="{{ route('user.logout') }}" class="btn btn-danger ml-1" style="margin-left: 1rem">Log out</a>
             @endauth
 
 

@@ -6,8 +6,8 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6 offset-md-3">
-                <h2 class="text-center text-dark mt-5">MON SHOP</h2>
-                <div class="text-center mb-5 text-dark">se connecter en tant qu'utilisateur</div>
+                <h2 class="text-center text-dark mt-5">RENT USER</h2>
+                <div class="text-center mb-5 text-dark">Log In as user</div>
                 <div class="card my-5">
 
                     @if (Session::get('error'))
@@ -40,11 +40,10 @@
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>
-                        <div class="text-center"><button type="submit" class="btn btn-color px-5 mb-5 w-100">Me
-                                connecter</button>
+                        <div class="text-center"><button type="submit" class="btn btn-color px-5 mb-5 w-100">Login</button>
                         </div>
-                        <div id="emailHelp" class="form-text text-center mb-5 text-dark">Nouveau membre ? <a href="#"
-                                class="text-dark fw-bold"> créer mon compte</a>
+                        <div id="emailHelp" class="form-text text-center mb-5 text-dark">New here? <a href="#"
+                                class="text-dark fw-bold"> create my account</a>
                         </div>
                     </form>
                 </div>

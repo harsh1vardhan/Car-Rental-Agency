@@ -39,7 +39,7 @@
                     <li>
                         <hr class="dropdown-divider" />
                     </li>
-                    <li><a class="dropdown-item" href="{{ route('vendors.logout') }}">Quitter ma boutique</a></li>
+                    <li><a class="dropdown-item" href="{{ route('vendors.logout') }}">Logout</a></li>
                 </ul>
             </li>
         </ul>

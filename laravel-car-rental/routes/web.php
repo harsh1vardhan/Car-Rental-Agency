@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CarsController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\userAuthController;
 use App\Http\Controllers\VendorAuthController;
 use App\Http\Controllers\Vendors\VendorDashboard;
@@ -20,7 +21,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [WebsiteController::class, 'index']);
 Route::get('/home', [WebsiteController::class, 'index']);
-
+Route::get('/car/{id}', [WebsiteController::class, 'show'])->name('car.show');
+Route::post('/order/new', [OrderController::class, 'saveOne'])->name('placeOrder');
 
 
 Route::middleware('guest')->group(function () {
@@ -38,6 +40,8 @@ Route::middleware('guest')->group(function () {
 //Route pour les utilisateurs connecté
 
 Route::middleware('auth')->group(function () {
+
+    Route::post('/rent-a-cart', [OrderController::class, 'saveOne']);
     //Déconnexion
     Route::get('/logout', [userAuthController::class, 'handleLogout'])->name('user.logout');
 });

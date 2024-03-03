@@ -6,8 +6,8 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6 offset-md-3">
-                <h2 class="text-center text-dark mt-5">MON SHOP</h2>
-                <div class="text-center mb-5 text-dark">Rejoindre en tant qu'utilisateur</div>
+                <h2 class="text-center text-dark mt-5">RENT USER</h2>
+                <div class="text-center mb-5 text-dark">Register as user</div>
                 <div class="card my-5">
 
                     @if (Session::get('success'))
@@ -25,8 +25,8 @@
                         </div>
 
                         <div class="mb-3">
-                            <input type="text" class="form-control" id="name" name="name"
-                                placeholder="Nom & prénom" value="{{ old('name') }}">
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Username"
+                                value="{{ old('name') }}">
 
                             @error('name')
                                 <div class="text-danger">{{ $message }}</div>
@@ -43,16 +43,16 @@
                         </div>
                         <div class="mb-3">
                             <input type="password" class="form-control" id="password" name="password"
-                                placeholder="Mot de passe">
+                                placeholder="password">
                             @error('password')
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>
-                        <div class="text-center"><button type="submit" class="btn btn-color px-5 mb-5 w-100">Creer mon
-                                compte</button>
+                        <div class="text-center"><button type="submit" class="btn btn-color px-5 mb-5 w-100">create my
+                                account</button>
                         </div>
-                        <div id="emailHelp" class="form-text text-center mb-5 text-dark">Déja inscrit? <a href="#"
-                                class="text-dark fw-bold"> Connectez-vous</a>
+                        <div id="emailHelp" class="form-text text-center mb-5 text-dark">Have account? <a href="/login"
+                                class="text-dark fw-bold"> Log in here</a>
                         </div>
                     </form>
                 </div>

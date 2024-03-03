@@ -16,7 +16,7 @@
         <div class="card-body p-4">
             <div class="text-center">
                 <!-- Product name-->
-                <h5 class="fw-bolder">{{ $article->name }}</h5>
+                <h5 class="fw-bolder">{{ $article->model }}</h5>
                 <!-- Product reviews-->
                 <div class="d-flex justify-content-center small text-warning mb-2">
                     <div class="bi-star-fill"></div>
@@ -26,15 +26,21 @@
                     <div class="bi-star-fill"></div>
                 </div>
                 <!-- Product price-->
-                {{ $article->price }} CFA
+                {{ $article->rent_per_day }} $
             </div>
         </div>
-       
+
         @auth
-        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Payer</a>
+            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                <div class="text-center"><a class="btn btn-outline-dark mt-auto"
+                        href="{{ route('car.show', $article->id) }}">Rent this car</a>
+
+
+
+
+
+                </div>
             </div>
-        </div>
 
         @endauth
     </div>

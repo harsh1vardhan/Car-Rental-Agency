@@ -41,7 +41,7 @@ class userAuthController extends Controller
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
             ]);
-            return redirect()->back()->with('success', 'Votre compte a été crée. Connecter vous');
+            return redirect()->back()->with('success', 'Your account has been created');
         } catch (Exception $e) {
         }
     }
