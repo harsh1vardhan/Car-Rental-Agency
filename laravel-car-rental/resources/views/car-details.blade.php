@@ -48,25 +48,27 @@
 
 
 
-                <form style="border: 1px solid #f2f2f2; padding:1rem; display:flex; flex-direction:column; gap:1rem"
-                    action="{{ route('placeOrder') }}" method="POST">
-                    @csrf
-                    @method('post')
+                @auth
+                    <form style="border: 1px solid #f2f2f2; padding:1rem; display:flex; flex-direction:column; gap:1rem"
+                        action="{{ route('placeOrder') }}" method="POST">
+                        @csrf
+                        @method('post')
 
-                    <input type="hidden" name="car_id" value="{{ $car->id }}">
-                    <div class="form-group">
-                        <label for="">Number of day you want</label>
-                        <input type="text" class="form-control" name="number_of_days">
-                    </div>
+                        <input type="hidden" name="car_id" value="{{ $car->id }}">
+                        <div class="form-group">
+                            <label for="">Number of day you want</label>
+                            <input type="text" class="form-control" name="number_of_days">
+                        </div>
 
-                    <div class="form-group">
-                        <label for="">Rent start date</label>
-                        <input type="date" class="form-control" name="start_date">
-                    </div>
+                        <div class="form-group">
+                            <label for="">Rent start date</label>
+                            <input type="date" class="form-control" name="start_date">
+                        </div>
 
 
-                    <button type="submit" class="btn btn-primary">Rent the cart</button>
-                </form>
+                        <button type="submit" class="btn btn-primary">Rent the cart</button>
+                    </form>
+                @endauth
             </div>
         </div>
     </section>

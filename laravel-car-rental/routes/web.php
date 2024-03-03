@@ -74,10 +74,12 @@ Route::middleware('vendor_middleware')->prefix('vendors/dashboard')->group(funct
     Route::prefix('articles')->group(function () {
 
         Route::get('/', [CarsController::class, 'index'])->name('cars.index');
-
         Route::get('/create', [CarsController::class, 'create'])->name('cars.create');
-
         Route::post('/create', [CarsController::class, 'handleCreate'])->name('cars.handleCreate');
+
+        Route::get('/edit/{id}', [CarsController::class, 'edit'])->name('cars.edit');
+
+        Route::post('/edit/{car}', [CarsController::class, 'handleEdit'])->name('cars.handleEdit');
     });
 
 

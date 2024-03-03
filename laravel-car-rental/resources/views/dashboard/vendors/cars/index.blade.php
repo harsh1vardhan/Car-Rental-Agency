@@ -46,7 +46,9 @@
                                 <td>{{ $article->number }}</td>
                                 <td>{{ $article->seating_capacity }}</td>
                                 <td>{{ $article->rent_per_day }} $</td>
-                                <td></td>
+                                <td>
+                                    <a href="{{ route('cars.edit', $article->id) }}" class="btn btn-primary btn-sm">Edit</a>
+                                </td>
                             </tr>
                         @endforeach
 

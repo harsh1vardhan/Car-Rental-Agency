@@ -22,6 +22,11 @@ class CarsController extends Controller
         return view('dashboard.vendors.cars.create');
     }
 
+    public function edit($id)
+    {
+        $car = Car::find($id);
+        return view('dashboard.vendors.cars.edit', compact('car'));
+    }
 
     public function handleCreate(Request $request)
     {
@@ -54,7 +59,6 @@ class CarsController extends Controller
             ];
 
 
-
             $product = Car::create($productData);
 
 
@@ -63,6 +67,46 @@ class CarsController extends Controller
 
             DB::commit();
             return redirect()->route('cars.index')->with('success', 'Car save successfull');
+        } catch (Exception $e) {
+            dd($e);
+            DB::rollBack();
+            return redirect()->back()->with('error', $e->getMessage());
+        }
+    }
+
+
+    public function handleEdit(Car $car, Request $request)
+    {
+
+        $request->validate([
+            'model' => 'required',
+            'number' => 'required|integer',
+            'seating_capacity' => 'required|integer',
+            'rent_per_day' => 'required|integer',
+
+        ], [
+            'model.required' => 'Car model is required',
+            'number.required' => 'Value is required',
+            'seating_capacity.required' => 'Value is required',
+            'rent_per_day.required' => 'Value is required',
+
+        ]);
+
+
+        try {
+
+
+            DB::beginTransaction();
+
+            $car->model = $request->model;
+            $car->number = $request->number;
+            $car->seating_capacity = $request->seating_capacity;
+            $car->rent_per_day = $request->rent_per_day;
+            $car->update();
+
+
+            DB::commit();
+            return redirect()->route('cars.index')->with('success', 'Car update successfull');
         } catch (Exception $e) {
             dd($e);
             DB::rollBack();
