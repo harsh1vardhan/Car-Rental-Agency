@@ -46,8 +46,8 @@
                         <div class="text-center"><button type="submit" class="btn btn-color px-5 mb-5 w-100">Me connecter à
                                 ma boutique</button>
                         </div>
-                        <div id="emailHelp" class="form-text text-center mb-5 text-dark">Pas de compte ? <a
-                                href="{{ route('vendors.login') }}" class="text-dark fw-bold"> Creer mon compte</a>
+                        <div id="emailHelp" class="form-text text-center mb-5 text-dark">No Account ? <a
+                                href="{{ route('vendors.login') }}" class="text-dark fw-bold"> Create one here</a>
                         </div>
                     </form>
                 </div>
